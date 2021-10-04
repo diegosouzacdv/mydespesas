@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814607990242",
+    "project_id": "my-despesas",
+    "storage_bucket": "my-despesas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814607990242:android:41458c8520758924500dbb",
+        "android_client_info": {
+          "package_name": "com.example.mydespesas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814607990242-ck26jb9uihgfuod3s0f4t2vobnljv9gk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbJBzXizErmvsc8tnrPs4suMT-AMW9KsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814607990242-ck26jb9uihgfuod3s0f4t2vobnljv9gk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
