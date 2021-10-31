@@ -6,7 +6,6 @@ import 'package:myexpenses/config/default.dart';
 import 'package:myexpenses/controller/offset_Controller.dart';
 import 'package:myexpenses/widgets/card/card_expense_list.dart';
 import 'package:myexpenses/widgets/card/card_item.dart';
-import 'package:myexpenses/widgets/card/card_item_page.dart';
 import 'package:myexpenses/widgets/card/panel_top.dart';
 import 'package:myexpenses/widgets/page/app_bar_myexpenses.dart';
 import 'package:provider/provider.dart';

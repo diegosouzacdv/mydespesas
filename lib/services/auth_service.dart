@@ -33,7 +33,7 @@ class AuthService extends ChangeNotifier {
   static Future<bool> hasBiometrics() async {
     try {
       return await _authFinger.canCheckBiometrics;
-    } on PlatformException catch (e) {
+    } on PlatformException catch (_) {
       return false;
     }
   }
@@ -47,7 +47,7 @@ class AuthService extends ChangeNotifier {
         useErrorDialogs: true,
         stickyAuth: true,
       );
-    } on PlatformException catch (e) {
+    } on PlatformException catch (_) {
       return false;
     }
 
@@ -99,13 +99,13 @@ class AuthService extends ChangeNotifier {
       isSigningIn = false;
       return;
     } else {
-      final googleAuth = await user.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
+      //final googleAuth = await user.authentication;
+      // final credential = GoogleAuthProvider.credential(
+      //   accessToken: googleAuth.accessToken,
+      //   idToken: googleAuth.idToken,
+      // );
 
-      var users = await FirebaseAuth.instance.signInWithCredential(credential);
+      //var users = await FirebaseAuth.instance.signInWithCredential(credential);
       isSigningIn = false;
     }
   }

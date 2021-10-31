@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,62 +14,40 @@ class CardItem extends StatefulWidget {
 }
 
 class _CardItemState extends State<CardItem> {
+
+  double horizontalDrag = 0;
+
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: widget.pageController,
-      builder: (context, child) {
-        double value = 1;
-        if (widget.pageController.position.haveDimensions) {
-          value = widget.pageController.page! - widget.currentPage;
-          value = (1 - (value.abs() * 0.5)).clamp(0.0, 1.0);
-          return Align(
-            alignment: Alignment.topCenter,
-            child: child,
-          );
-        } else {
-          return Align(
-            alignment: Alignment.topCenter,
-            child: child,
-          );
-        }
+    return GestureDetector(
+      onHorizontalDragUpdate: (horizontal) {
+        setState(() {
+          horizontalDrag += horizontal.delta.dx;
+          horizontalDrag %= 360;
+        });
       },
-      child: Padding(
-        padding: const EdgeInsets.only(right: 12, bottom: 12, left: 12),
-        child: Container(
-          width: 500,
-          height: 200,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            gradient: const LinearGradient(
-              colors: [Color(0xff323232), Color(0xff000000)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+      child: Transform(
+        transform: Matrix4.identity()
+        ..setEntry(3, 2, 0.001)
+        ..rotateY(pi / 180 * horizontalDrag),
+        alignment: Alignment.center,
+        child: Padding(
+            padding: const EdgeInsets.only(right: 12, bottom: 12, left: 12),
+            child: Container(
+              width: 500,
+              height: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                gradient: const LinearGradient(
+                  colors: [Color(0xff323232), Color(0xff000000)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: horizontalDrag <= 90 || horizontalDrag >= 270 ? cardFront() : cardBack(),
             ),
           ),
-          child: cardFront(),
-        ),
       ),
-
-      // Container(
-      //   margin: const EdgeInsets.only(left: 20),
-      //   decoration: BoxDecoration(
-      //     boxShadow: const [BoxShadow(color: Colors.deepPurpleAccent, offset: Offset(0, 10), blurRadius: 15)],
-      //     borderRadius: BorderRadius.circular(20),
-      //     color: Colors.white,
-      //   ),
-      //   child: ClipRRect(
-      //     borderRadius: BorderRadius.circular(20),
-      //     child: RotatedBox(
-      //       quarterTurns: 4,
-      //       child: Image.network(
-      //
-      //         'https://cms.santander.com.br/sites/WPS/imagem/imagem-nova-loja-cartao-unique-black/21-06-08_175059_P_unique.png',
-      //         fit: BoxFit.cover,
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
@@ -105,19 +85,68 @@ Widget cardFront() {
             ),
           ],
         ),
-        const SizedBox(
-          height: 40,
-        ),
+        const SizedBox(height: 40),
         Image.asset(
           'assets/images/chip.png',
           height: 25,
         ),
-        SizedBox(
-          height: 10,
+        const SizedBox(height: 10),
+        const Text(
+          '1324 5678 9101 1121',
+          style: TextStyle(color: Colors.grey, fontSize: 18, wordSpacing: 15, shadows: [
+            BoxShadow(
+              blurRadius: 2,
+              spreadRadius: 2,
+              color: Colors.black,
+              offset: Offset(2, 2),
+            )
+          ]),
         ),
-        
+        const SizedBox(height: 10),
+        const Text(
+          '05 / 20',
+          style: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
       ],
     ),
   );
 
+}
+
+Widget cardBack() {
+  return Container(
+    padding: const EdgeInsets.only(top: 18),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 50,
+          color: Colors.grey[700],
+        ),
+        const SizedBox(height: 10),
+        Transform(
+          transform: Matrix4.identity()
+            ..setEntry(3, 2, 0.001)
+            ..rotateY(pi * 1),
+          alignment: Alignment.center,
+          child: const Padding(
+            padding: EdgeInsets.all(12.0),
+            child: Text(
+              '132',
+              style: TextStyle(color: Colors.grey, fontSize: 18, wordSpacing: 15, shadows: [
+                BoxShadow(
+                  blurRadius: 2,
+                  spreadRadius: 2,
+                  color: Colors.black,
+                  offset: Offset(2, 2),
+                )
+              ]),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }

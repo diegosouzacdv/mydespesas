@@ -5,11 +5,11 @@ import 'package:myexpenses/database/db_firestore.dart';
 
 class CardProvider extends ChangeNotifier {
 
-  List<Card> _list = [];
+  final List<Card> _list = [];
 
   late FirebaseFirestore db;
 
-  CartaoProvider() {
+  CardProvider() {
     _startProvider();
   }
   _startProvider() async {
@@ -20,6 +20,7 @@ class CardProvider extends ChangeNotifier {
   }
 
   save(Card card) {
+    _list.add(card);
     //await db.collection("expenses/")
   }
 
