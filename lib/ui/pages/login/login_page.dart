@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mydespesas/services/auth_service.dart';
-import 'package:mydespesas/ui/menu_dashboard_layout.dart';
-import 'package:mydespesas/widgets/login/google_signup_button_widget.dart';
+import 'package:myexpenses/services/auth_service.dart';
+import 'package:myexpenses/ui/menu_dashboard_layout.dart';
+import 'package:myexpenses/widgets/login/google_signup_button_widget.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -37,17 +37,17 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     super.dispose();
   }
 
-  setFormAction(bool acao) {
+  setFormAction(bool action) {
     setState(() {
-      isLogin = acao;
+      isLogin = action;
       if (isLogin) {
         titulo = '';
         actionButton = 'Login';
-        toggleButton = 'Ainda não tem conta? Cadastra-se agora.';
+        toggleButton = "Don't have an account? Register now.";
       } else {
-        titulo = 'Crie sua conta';
-        actionButton = 'Cadastrar';
-        toggleButton = 'Já tem conta?';
+        titulo = 'Create your account';
+        actionButton = 'Register';
+        toggleButton = 'Already have an account?';
       }
     });
   }
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   registrar() async {
     setState(() => loading = true);
     try {
-      await context.read<AuthService>().registrar(email.text, senha.text);
+      await context.read<AuthService>().register(email.text, senha.text);
     } on AuthException catch (e) {
       setState(() => loading = false);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message)));
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                   const Padding(
                     padding: EdgeInsets.all(15.0),
                     child: Text(
-                      "My Despesas",
+                      "My Expenses",
                       style: TextStyle(
                         fontSize: 42,
                         fontWeight: FontWeight.w700,
@@ -115,7 +115,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Informe o email corretamente!';
+                          return 'Enter the email correctly!';
                         }
                         return null;
                       },
@@ -132,9 +132,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Informe sua senha!';
+                          return 'Inform your password!';
                         } else if (value.length < 6) {
-                          return 'Sua senha deve ter no mínimo 6 caracteres';
+                          return 'Your password must be at least 6 characters';
                         }
                         return null;
                       },

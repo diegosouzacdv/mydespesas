@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mydespesas/bloc/navigation_bloc/navigation_bloc.dart';
-import 'package:mydespesas/widgets/page/app_bar_mydespesas.dart';
+import 'package:myexpenses/bloc/navigation_bloc/navigation_bloc.dart';
+import 'package:myexpenses/widgets/page/app_bar_myexpenses.dart';
 
 class DashBoardPage extends StatelessWidget with NavigationStates {
   final VoidCallback onMenuTap;
@@ -12,12 +12,11 @@ class DashBoardPage extends StatelessWidget with NavigationStates {
     return Container(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 48),
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(40)),
         color: Colors.grey,
       ),
       child: Column(
         children: [
-          AppBarMyDespesas(onMenuTap: onMenuTap, title: "Dashboard"),
+          AppBarMyExpenses(onMenuTap: onMenuTap, title: "Dashboard"),
         ],
       )
     );

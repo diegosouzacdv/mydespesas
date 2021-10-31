@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mydespesas/services/auth_service.dart';
-import 'package:mydespesas/ui/pages/login/login_page.dart';
-import 'package:mydespesas/ui/menu_dashboard_layout.dart';
+import 'package:myexpenses/services/auth_service.dart';
+import 'package:myexpenses/ui/pages/login/login_page.dart';
+import 'package:myexpenses/ui/menu_dashboard_layout.dart';
 
 class FingerPrintAuthenticated extends StatelessWidget {
   const FingerPrintAuthenticated({

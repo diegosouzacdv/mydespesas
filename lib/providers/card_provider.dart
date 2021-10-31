@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:mydespesas/database/db_firestore.dart';
-import 'package:mydespesas/models/cartao.dart';
+import 'package:flutter/material.dart';
+import 'package:myexpenses/database/db_firestore.dart';
 
-class CartaoProvider extends ChangeNotifier {
+class CardProvider extends ChangeNotifier {
 
-  List<Cartao> _lista = [];
+  List<Card> _list = [];
 
   late FirebaseFirestore db;
 
@@ -19,8 +19,8 @@ class CartaoProvider extends ChangeNotifier {
     db = DBFirestore.get();
   }
 
-  save(Cartao cartao) {
-    //await db.collection("despesas/")
+  save(Card card) {
+    //await db.collection("expenses/")
   }
 
 

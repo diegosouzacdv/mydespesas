@@ -1,17 +1,17 @@
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
-import 'package:mydespesas/ui/pages/cartoes/cartoes.dart';
-import 'package:mydespesas/ui/pages/dashboard/dashboard_page.dart';
-import 'package:mydespesas/ui/pages/daytrade/daytrade_page.dart';
-import 'package:mydespesas/ui/pages/despesas/despesas_page.dart';
-import 'package:mydespesas/ui/pages/investimentos/investimentos_page.dart';
+import 'package:myexpenses/ui/pages/cards/cards.dart';
+import 'package:myexpenses/ui/pages/dashboard/dashboard_page.dart';
+import 'package:myexpenses/ui/pages/daytrade/daytrade_page.dart';
+import 'package:myexpenses/ui/pages/expenses/expenses_page.dart';
+import 'package:myexpenses/ui/pages/investments/investments_page.dart';
 
 enum NavigationEvents {
   dasboardClickEvent,
-  despesasClickEvent,
-  cartoesClickEvent,
-  investimentosClickEvent,
+  expensesClickEvent,
+  cardsClickEvent,
+  investmentsClickEvent,
   dayTradeClickEvent,
 }
 
@@ -30,18 +30,18 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
           onMenuTap: onMenuTap,
         );
         break;
-      case NavigationEvents.despesasClickEvent:
-        yield DespesasPage(
+      case NavigationEvents.expensesClickEvent:
+        yield ExpensesPage(
           onMenuTap: onMenuTap,
         );
         break;
-      case NavigationEvents.cartoesClickEvent:
-        yield Cartoes(
+      case NavigationEvents.cardsClickEvent:
+        yield Cards(
           onMenuTap: onMenuTap,
         );
         break;
-      case NavigationEvents.investimentosClickEvent:
-        yield InvestimentosPage(
+      case NavigationEvents.investmentsClickEvent:
+        yield InvestmentsPage(
           onMenuTap: onMenuTap,
         );
         break;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mydespesas/bloc/navigation_bloc/navigation_bloc.dart';
-import 'package:mydespesas/services/auth_service.dart';
-import 'package:mydespesas/widgets/menu/title_menu.dart';
+import 'package:myexpenses/bloc/navigation_bloc/navigation_bloc.dart';
+import 'package:myexpenses/services/auth_service.dart';
+import 'package:myexpenses/widgets/menu/title_menu.dart';
 
 class Menu extends StatelessWidget {
   final Animation<Offset> slideAnimation;
@@ -47,36 +47,36 @@ class Menu extends StatelessWidget {
                 const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
-                    BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.despesasClickEvent);
+                    BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.expensesClickEvent);
                     onMenuItemClicked();
                   },
                   child: TitleMenu(
                     selectedIndex: selectedIndex,
-                    title: "Despesas",
+                    title: "Expenses",
                     index: 1,
                   ),
                 ),
                 const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
-                    BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.cartoesClickEvent);
+                    BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.cardsClickEvent);
                     onMenuItemClicked();
                   },
                   child: TitleMenu(
                     selectedIndex: selectedIndex,
-                    title: "Meus Cartões",
+                    title: "My Cards",
                     index: 2,
                   ),
                 ),
                 const SizedBox(height: 30),
                 GestureDetector(
                   onTap: () {
-                    BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.investimentosClickEvent);
+                    BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.investmentsClickEvent);
                     onMenuItemClicked();
                   },
                   child: TitleMenu(
                     selectedIndex: selectedIndex,
-                    title: "Investimentos",
+                    title: "Investments",
                     index: 3,
                   ),
                 ),
@@ -98,7 +98,7 @@ class Menu extends StatelessWidget {
                     context.read<AuthService>().logout();
                   },
                   child: const Text(
-                    "Sair",
+                    "Exit",
                     style: TextStyle(
                       fontSize: 22.0,
                       color: Colors.redAccent,

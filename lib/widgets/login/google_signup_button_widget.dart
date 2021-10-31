@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mydespesas/services/auth_service.dart';
+import 'package:myexpenses/services/auth_service.dart';
 import 'package:provider/provider.dart';
 
 class GoogleSignupButtonWidget extends StatelessWidget {

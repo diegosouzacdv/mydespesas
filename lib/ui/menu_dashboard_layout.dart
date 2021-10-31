@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mydespesas/bloc/navigation_bloc/navigation_bloc.dart';
-import 'package:mydespesas/ui/pages/dashboard/dashboard.dart';
-import 'package:mydespesas/ui/menu.dart';
-import 'package:mydespesas/ui/pages/despesas/despesas_page.dart';
-import 'package:mydespesas/ui/pages/dashboard/dashboard_page.dart';
-import 'package:mydespesas/ui/pages/cartoes/cartoes.dart';
+import 'package:myexpenses/bloc/navigation_bloc/navigation_bloc.dart';
+import 'package:myexpenses/ui/pages/dashboard/dashboard.dart';
+import 'package:myexpenses/ui/menu.dart';
+import 'package:myexpenses/ui/pages/expenses/expenses_page.dart';
+import 'package:myexpenses/ui/pages/dashboard/dashboard_page.dart';
+import 'package:myexpenses/ui/pages/cards/cards.dart';
 
 const Color backgroundColor = Color(0xFF4A4A58);
 
@@ -99,9 +99,9 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout> with SingleTi
   int findSelectedIndex(NavigationStates navigationStates) {
     if (navigationStates is DashBoardPage) {
       return 0;
-    } else if (navigationStates is DespesasPage) {
+    } else if (navigationStates is ExpensesPage) {
       return 1;
-    } else if (navigationStates is Cartoes) {
+    } else if (navigationStates is Cards) {
       return 2;
     } else {
       return 0;

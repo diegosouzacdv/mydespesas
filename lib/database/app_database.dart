@@ -1,4 +1,4 @@
-import 'package:mydespesas/database/dao/cartao_dao.dart';
+import 'package:myexpenses/database/dao/card_dao.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -7,7 +7,7 @@ Future<Database?> getDatabase() async {
   return openDatabase(
     path,
     onCreate: (db, version) {
-      db.execute(CartaoDao.tableSql);
+      db.execute(CardDao.tableSql);
     },
     version: 1,
     //onDowngrade: onDatabaseDowngradeDelete,
